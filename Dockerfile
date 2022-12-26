@@ -106,7 +106,8 @@ RUN set -x; \
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         apt-get install --reinstall ca-certificates &&\
         /usr/local/bin/python -m pip install --upgrade pip &&\
-        pip3 install -r https://raw.githubusercontent.com/OCA/OCB/14.0/requirements.txt &&\
+        #pip3 install -r https://raw.githubusercontent.com/OCA/OCB/14.0/requirements.txt &&\
+        pip3 install -r https://github.com/odoo/odoo/raw/14.0/requirements.txt && \
         pip3 install phonenumbers simplejson gevent PyYAML zxcvbn &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
@@ -118,7 +119,8 @@ COPY ./ssh_known_git_hosts /root/.ssh/known_hosts
 RUN set -x; \
         useradd -l --create-home --home-dir /opt/odoo --no-log-init odoo &&\
         /bin/bash -c "mkdir -p /opt/odoo/{etc,log,odoo,additional_addons,private_addons,data,private}" &&\
-        git clone -b 14.0 --depth 1 https://github.com/OCA/OCB.git /opt/odoo/odoo &&\
+        git clone -b 14.0 --depth 1 https://github.com/odoo/odoo.git /opt/odoo/odoo &&\
+        #git clone -b 14.0 --depth 1 https://github.com/OCA/OCB.git /opt/odoo/odoo &&\
         rm -rf /opt/odoo/odoo/.git &&\
         chown -R odoo:odoo /opt/odoo
 
