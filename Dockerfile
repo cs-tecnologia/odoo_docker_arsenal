@@ -227,7 +227,7 @@ RUN chown odoo:odoo /opt/odoo/etc/odoo.conf
 #VOLUME ["/opt/odoo/data/sermig"]
 
 # Expose Odoo services
-EXPOSE 8071
+EXPOSE 8072
 
 # Set default user when running the container
 USER odoo
